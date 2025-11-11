@@ -1,0 +1,7 @@
+---WEEK 1---
+
+
+(11-11-2025)
+    1.Install Python
+    2.Install any Python IDE(PyCharm,VSCode,IDLE,Jupyter Notebook)
+    3.Work on Pandas library
