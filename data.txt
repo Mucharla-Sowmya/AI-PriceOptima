@@ -1,4 +1,0 @@
-I chose the Dynamic Pricing Dataset because it directly supports our project, AI: PriceOptima. This project aims to predict and adjust product prices using machine learning. The dataset includes information like product ID, price, demand, competitor price, inventory level, and sales volume. These details are helpful for understanding how different pricing strategies impact customer demand and profit. It is easy to use since it comes in CSV format, contains structured columns, and has both numerical and categorical data types. This makes it suitable for data analysis with Pandas, data visualization, and training machine learning models.
-It also include column names like (Product_ID,Base_Price,Competitor_Price,Units_Sold,Inventory_Level,Discount_Offered,Revenue) and also 
-Number of Rows: 10,000 (approx.)
-Number of Columns: 7
