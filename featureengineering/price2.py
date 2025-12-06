@@ -4,7 +4,7 @@ import numpy as np
 # -----------------------------------
 # Load dataset
 # -----------------------------------
-df = pd.read_csv("daily_fixed_dataset.csv")
+df = pd.read_csv("../milestone-1/combined_dataset.csv")
 
 # Parse dates
 df["Date"] = pd.to_datetime(df["Date"], format="%d-%m-%Y", errors="coerce")

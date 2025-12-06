@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # Load the daily fixed dataset
-df = pd.read_csv("daily_fixed_dataset.csv")
+df = pd.read_csv("../milestone-1/combined_dataset.csv")
 
 # Ensure Date is in datetime format
 df["Date"] = pd.to_datetime(df["Date"])

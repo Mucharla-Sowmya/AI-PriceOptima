@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the dataset
-df = pd.read_csv("daily_fixed_dataset.csv")
+df = pd.read_csv("../milestone-1/combined_dataset.csv")
 
 # Safe robust datetime parsing
 df["Date"] = pd.to_datetime(df["Date"], dayfirst=True, errors="coerce")

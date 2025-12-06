@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 
 # Load dataset (the one with daily fixed + demand features)
-df = pd.read_csv("daily_fixed_dataset.csv")
+df = pd.read_csv("../milestone-1/combined_dataset.csv")
 
 # Ensure proper sorting
 df = df.sort_values(["Product ID", "Date"]).reset_index(drop=True)
