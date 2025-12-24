@@ -128,6 +128,7 @@ print(f"Total Static Revenue: {total_static:,.2f}")
 print(f"Total Rule-Based Revenue: {total_rule:,.2f}")
 print(f"Total Revenue Lift: {total_lift:,.2f}")
 
+
 if total_lift > 0:
     print("\n🎉 Positive Revenue Lift → Rule-based engine IMPROVED revenue!")
 else:
