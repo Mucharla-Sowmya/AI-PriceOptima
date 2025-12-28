@@ -158,6 +158,12 @@ lgbm_rmse = np.sqrt(mean_squared_error(y_test, y_pred_lgbm))
 
 print(f"LightGBM MAE  : {lgbm_mae:.4f}")
 print(f"LightGBM RMSE : {lgbm_rmse:.4f}")
+import joblib
+
+# Save trained LightGBM model
+joblib.dump(lgbm_model, "best_pricing_model.pkl")
+
+print("✅ Model saved as best_pricing_model.pkl")
 
 # ------------------------------------------------------------
 # STEP 4: ML-BASED DYNAMIC PRICING SIMULATION
