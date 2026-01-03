@@ -3,34 +3,48 @@ from pydantic import BaseModel, Field
 import joblib
 import numpy as np
 
+# ------------------------------------
+# FastAPI App
+# ------------------------------------
 app = FastAPI(
     title="PriceOptima Pricing API",
-    description="ML-based dynamic pricing using LightGBM",
-    version="1.0"
+    version="1.0",
+    description="ML-based dynamic pricing service"
 )
-@app.get("/")
-def root():
-    return {
-        "message": "Welcome to PriceOptima Dynamic Pricing API",
-        "endpoints": {
-            "docs": "/docs",
-            "predict": "/predict-price"
-        }
-    }
 
+# ------------------------------------
 # Load trained model
+# ------------------------------------
 model = joblib.load("best_pricing_model.pkl")
 
+# ------------------------------------
+# Input Schema (Minimal & Clean)
+# ------------------------------------
 class PricingInput(BaseModel):
-    price: float = Field(..., gt=0, example=49.99)
-    stock_level: int = Field(..., ge=0, example=1200)
-    day_of_week: int = Field(..., ge=0, le=6, example=6)
-    is_weekend: int = Field(..., ge=0, le=1, example=1)
-    month: int = Field(..., ge=1, le=12, example=12)
+    price: float = Field(..., example=49.99)
+    stock_level: int = Field(..., example=1200)
+    day_of_week: int = Field(..., example=6)
+    is_weekend: int = Field(..., example=1)
+    month: int = Field(..., example=12)
 
-@app.post("/predict-price")
+# ------------------------------------
+# Root Endpoint (optional but clean)
+# ------------------------------------
+@app.get("/", tags=["Health"])
+def home():
+    return {"status": "PriceOptima API running"}
+
+# ------------------------------------
+# Prediction Endpoint
+# ------------------------------------
+@app.post(
+    "/predict-price",
+    tags=["Pricing"],
+    summary="Get ML-based recommended price"
+)
 def predict_price(data: PricingInput):
 
+    # Prepare base features
     base_features = np.array([
         data.price,
         data.stock_level,
@@ -39,11 +53,14 @@ def predict_price(data: PricingInput):
         data.month
     ])
 
+    # Match model input size
     full_features = np.zeros((1, model.n_features_in_))
     full_features[0, :len(base_features)] = base_features
 
+    # Predict demand
     predicted_demand = model.predict(full_features)[0]
 
+    # Pricing logic
     recommended_price = data.price
     if predicted_demand > 200:
         recommended_price *= 1.05
