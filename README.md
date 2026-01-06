@@ -87,6 +87,10 @@ The dataset was cleaned by removing duplicates, handling missing values, and pre
 
  - Communication between the React frontend and FastAPI backend was validated through successful API calls.
 
+      -  Note:
+          - The application is currently configured for local execution.  
+          - The frontend and backend URLs are accessible only while the respective servers are running.
+
 ---
 
 ## 📈 Key Outputs & Results
